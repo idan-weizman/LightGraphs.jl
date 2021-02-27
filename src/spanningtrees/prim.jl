@@ -34,6 +34,7 @@ function prim_mst end
         end
     end
 
-    return [Edge{U}(parents[v], v) for v in vertices(g) if parents[v] != 0]
+    mst = [Edge{U}(parents[v], v) for v in vertices(g) if parents[v] != 0]
+    return (mst=mst, weight=sum([distmx[src(edge), dst(edge)] for edge in mst]))
 end
 
